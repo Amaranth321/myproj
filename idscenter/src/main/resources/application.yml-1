@@ -1,0 +1,11 @@
+server:
+    port: 8761
+spring:
+    application:
+        name: ids-center
+eureka:
+    client:
+      registerWithEureka: false  #register ids itself into eureka or nor
+      fetchRegistry: false
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka

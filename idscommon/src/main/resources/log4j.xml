@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30">
+    <Properties>
+        <Property name="appName">idscommon</Property>
+        <Property name="appPackage">com.ncs.kaisquare.ids</Property>
+        <Property name="logFolder">logs</Property>
+        <Property name="patternLayout">%d{yyyy-MM-dd HH:mm:ss} %-5p [%C{0}:%L] ~ %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="consoleAppender">
+            <PatternLayout pattern="${patternLayout}" />
+        </Console>
+
+        <RollingFile name="rollingFileAppender" createOnDemand="true">
+            <FileName>${logFolder}/${appName}.log</FileName>
+            <FilePattern>${logFolder}/${appName}.%d{yyyy-MM-dd-HH}-59-59.log</FilePattern>
+            <PatternLayout pattern="${patternLayout}" />
+            <TimeBasedTriggeringPolicy interval="6" modulate="true" />
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logFolder}">
+                    <IfFileName glob="*.log" />
+                    <IfLastModified age="30d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+        <RollingFile name="exeRollingFileAppender" createOnDemand="true">
+            <FileName>${logFolder}-exe/${appName}-exe.log</FileName>
+            <FilePattern>${logFolder}-exe/${appName}-exe.%d{yyyy-MM-dd-HH}-59-59.log</FilePattern>
+            <PatternLayout pattern="${patternLayout}" />
+            <TimeBasedTriggeringPolicy interval="6" modulate="true" />
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logFolder}-exe">
+                    <IfFileName glob="*.log" />
+                    <IfLastModified age="30d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="${appPackage}" level="info" additivity="false">
+            <AppenderRef ref="rollingFileAppender" />
+        </Logger>
+
+        <!--<Logger name="exeLogger" level="info" additivity="false">-->
+            <!--<AppenderRef ref="exeRollingFileAppender" />-->
+        <!--</Logger>-->
+
+        <Root level="info">
+            <AppenderRef ref="consoleAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

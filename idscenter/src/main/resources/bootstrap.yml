@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:9002/
+      profile: test
+      name: center
+      #name: center-cluster-node1
+      #name: center-cluster-node2
+      #name: center-cluster-node3
+      label: master

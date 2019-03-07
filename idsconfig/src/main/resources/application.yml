@@ -1,0 +1,20 @@
+server:
+  port: 9002
+
+spring:
+  application:
+     name: config-server
+  cloud:
+    config:
+       server:
+         git:
+           uri: https://github.com/Amaranth1/cloud-config
+           search-paths: ids
+           username: Amaranth1
+           password: tassle123456
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health
