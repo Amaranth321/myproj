@@ -1,20 +1,23 @@
 package com.ncs.kaisquare.ids.entity;
 
-import com.ncs.kaisquare.ids.utils.SnowFlake;
-import com.ncs.kaisquare.ids.utils.Util;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
-@Document(collection="User")
-public class User extends DataEntity{
+@Document(collection = "User")
+public class AuthDataEntity {
+    @Indexed
+    private String id;
     @Indexed
     private String username;
     private String password;
     private String role;
 
-    public User() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -39,19 +42,5 @@ public class User extends DataEntity{
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
-
-    public void encriptPassword(){
-        this.password = Util.encryptPassword(this.password);
     }
 }

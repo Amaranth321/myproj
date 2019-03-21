@@ -1,25 +1,16 @@
 package com.ncs.kaisquare.ids.exceptions;
 
-public class ApiException extends Exception {
+public class ApiException extends IdsException {
 
     public ApiException() {
         super();
     }
 
     public ApiException(String message) {
-        super(message);
+        super(IdsHttpStatus.API_EXCEPTION.value(),message);
     }
 
-    public ApiException(String format, Object... params) {
-        super(String.format(format, params));
+    public ApiException(int code,String message) {
+        super(code,message);
     }
-
-    public ApiException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public ApiException(Throwable cause) {
-        super(cause);
-    }
-
 }

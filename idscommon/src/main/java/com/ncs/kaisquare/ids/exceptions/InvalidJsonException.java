@@ -1,18 +1,20 @@
 package com.ncs.kaisquare.ids.exceptions;
 
 /**
- * @author Aye Maung
- * @since v4.4
+ * @author RenZongKe
  */
-public class InvalidJsonException extends Exception
-{
+public class InvalidJsonException extends IdsException {
+
     public InvalidJsonException()
     {
         super();
     }
 
-    public InvalidJsonException(String file)
-    {
-        super(file);
+    public InvalidJsonException(String message) {
+        super(IdsHttpStatus.INVALID_JSON.value(),message);
+    }
+
+    public InvalidJsonException(int code,String message){
+        super(code,message);
     }
 }

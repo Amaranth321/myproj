@@ -13,9 +13,7 @@ public class DataEntity implements Serializable{
     @Indexed
     private String id;
     private Date createDate;
-    private String createBy;
     private Date lastUpdateDate;
-    private String lastUpdateBy;
 
     public DataEntity() {
     }
@@ -36,14 +34,6 @@ public class DataEntity implements Serializable{
         this.createDate = createDate;
     }
 
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
     public Date getLastUpdateDate() {
         return lastUpdateDate;
     }
@@ -52,17 +42,14 @@ public class DataEntity implements Serializable{
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public String getLastUpdateBy() {
-        return lastUpdateBy;
-    }
-
-    public void setLastUpdateBy(String lastUpdateBy) {
-        this.lastUpdateBy = lastUpdateBy;
-    }
-
-    protected void preSave(){
+    public void preSave(){
         if(StringUtils.isEmpty(this.id)){
             this.id = String.valueOf(SnowFlake.nextId());
+            this.createDate = new Date();
+            this.lastUpdateDate = new Date();
+        }else{
+            this.lastUpdateDate = new Date();
         }
+
     }
 }

@@ -92,16 +92,16 @@ public class Util {
         return hash;
     }
 
-    public static String encryptPassword(String username, String password)
+    public static String encryptPassword(String password)
     {
-        return encryptPassword(username, password, "plain");
+        return encryptPassword(password, "plain");
     }
 
-    public static String encryptPassword(String username, String password, String mechanism) {
+    public static String encryptPassword(String password, String mechanism) {
         if (mechanism != null && mechanism.equals("sha")) {
             return password;
         } else {
-            return sha256InBase64(username + ":juzz4:" + password);
+            return sha256InBase64("ids:" + password);
         }
     }
 

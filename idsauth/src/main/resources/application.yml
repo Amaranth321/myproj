@@ -1,0 +1,15 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: ids-auth
+  data:
+    mongodb:
+      uri: mongodb://platform:platform@47.107.44.46:20001/platform
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+jwt:
+  security: idskey

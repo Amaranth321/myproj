@@ -1,32 +1,18 @@
 package com.ncs.kaisquare.ids.exceptions;
 
 
-
-public class InternalException extends Exception {
-    private int statusCode = 0;
+public class InternalException extends IdsException {
 
     public InternalException() {
         super();
     }
 
     public InternalException(String message) {
-        super(message);
+        super(IdsHttpStatus.INTERNAL_EXCEPTION.value(),message);
     }
 
-    public InternalException(String message, Throwable cause) {
-        super(message, cause);
+    public InternalException(int code, String message) {
+        super(code,message);
     }
 
-    public InternalException(Throwable cause) {
-        super(cause);
-    }
-
-    public InternalException(int statusCode, String message) {
-        super(message);
-        this.statusCode = statusCode;
-    }
-
-    public int getStatusCode() {
-        return statusCode;
-    }
 }

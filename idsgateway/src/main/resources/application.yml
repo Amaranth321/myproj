@@ -1,0 +1,25 @@
+server:
+  port: 9009
+spring:
+  application:
+    name: ids-gateway
+
+zuul:
+  ignoredServices: "*"
+  routes:
+   auth-service:
+     path: /auth/**
+     serviceId: IDS-AUTH
+     sensitiveHeaders: Cookie,Set-Cookie
+     stripPrefix: false
+   admin-service:
+     path: /admin/**
+     serviceId: IDS-ADMIN
+     sensitiveHeaders: Cookie,Set-Cookie
+     stripPrefix: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+

@@ -1,8 +1,6 @@
 package com.ncs.kaisquare.ids.response;
 
-import java.util.List;
-
-public class ApiResponse<T> {
+public class ApiResponse {
 
     protected int code;
     protected String message;

@@ -68,5 +68,6 @@
       <module>idscommon</module>
       <module>idsconfig</module>
       <module>idsgateway</module>
+      <module>idscron</module>
   </modules>
 </project>
