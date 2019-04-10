@@ -1,5 +1,8 @@
 package com.ncs.kaisquare.ids;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +34,13 @@ public abstract class Test implements TestInterface{
 //        long count2 = list2.parallelStream().filter(x->x%4==0).count();
 //        System.out.println("search linkedlist use:"+(System.currentTimeMillis()-time4)+" and count is "+count2);
 
-
+        try {
+            Socket socket = new Socket();
+            socket.connect(new InetSocketAddress("hz.dev.kaisquare.com.cn",80),1000);
+            System.out.println("connected with hz.dev.kaisquare.com.cn");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
